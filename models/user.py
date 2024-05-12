@@ -9,7 +9,7 @@ ph = argon2.PasswordHasher()
 class User(db.Model):
     __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(32), nullable=False)
+    username = db.Column(db.String(32), unique=True, nullable=False)
     email = db.Column(db.String(255), unique=True)
     password = db.Column(db.String(255), nullable=False)
 
@@ -18,22 +18,20 @@ class User(db.Model):
 
 
 def create_user(**kwargs):
-    # Agregar un usuario a la base de datos.
     new_user = User(**kwargs)
 
     using_email = db.session.query(User).filter(User.email == new_user.email).first()
 
     if using_email:
-        return "El email ingresado esta en uso."
+        return False, "El email ingresado esta en uso."
 
     try:
         new_user.password = ph.hash(new_user.password)
         db.session.add(new_user)
         db.session.commit()
-        db.session.refresh(new_user)
-        return new_user
+        return True, "Usuario creado con éxito."
     except:
-        return "Error al crear un nuevo usuario."
+        return False, "Error al crear un nuevo usuario."
 
 
 def identify(email, password):
@@ -51,7 +49,6 @@ def identify(email, password):
 
 
 def get_by_id(find_id):
-    find_id = int(find_id)
     return db.session.query(User).filter(User.id == find_id).first()
 
 

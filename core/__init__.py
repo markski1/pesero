@@ -34,7 +34,7 @@ def create_app(env="development"):
             database.reset_db()
             print(user.create_user(
                 username="testacc",
-                email="me@markski.ar.ar",
+                email="me@markski.ar",
                 password="b1gtest"
             ))
 

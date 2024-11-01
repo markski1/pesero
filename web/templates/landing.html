@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='landing.css') }}"/>
         <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
 
         <title>{% block title %}{% endblock %} - Pesero</title>
@@ -13,7 +13,16 @@
         <header>
             <h1>Pesero</h1>
         </header>
-
-        <main>{% block main %} {% endblock %}</main>
+        <main>
+            <p>Pesero es una aplicación web para llevar cuenta de tus finanzas.</p>
+            <div id="action-div">
+                <p>
+                    <a href="/login">Iniciar sesión</a>
+                </p>
+                <p>
+                    <a href="/register">Crear cuenta</a>
+                </p>
+            </div>
+        </main>
     </body>
 </html>

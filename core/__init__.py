@@ -4,7 +4,7 @@ from flask_login import current_user
 from core import database, session
 from core.config import config
 
-from models import user
+from models import user, movement
 
 import locale
 locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')

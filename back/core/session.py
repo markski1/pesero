@@ -3,7 +3,7 @@ from flask_login import (
     LoginManager,
     UserMixin
 )
-from models import user
+from back.models import user
 
 
 def init_app(app):

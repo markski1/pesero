@@ -1,10 +1,10 @@
 from flask import Flask, redirect
 from flask_login import current_user
 
-from core import database, session
-from core.config import config
+from back.core import database, session
+from back.core.config import config
 
-from models import user, movement
+from back.models import user
 
 import locale
 locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')

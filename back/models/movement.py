@@ -1,5 +1,5 @@
 from datetime import datetime as dt
-from core.database import db
+from back.core.database import db
 
 
 class Movement(db.Model):
